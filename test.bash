@@ -16,15 +16,15 @@ out=$(echo 440 | ./tuner)
 #異常な動作
 out=$(echo 10 | ./tuner)
 [ "$?" = 1 ]      || ng "$LINENO"
-[ "${out}" = "Below 27.625Hz or above 4205.036Hz is not defined" ] || ng "$LINENO"
+[ "${out}" = "" ] || ng "$LINENO"
 
 out=$(echo -10 | ./tuner)
 [ "$?" = 1 ]      || ng "$LINENO"
-[ "${out}" = "Below 27.625Hz or above 4205.036Hz is not defined" ] || ng "$LINENO"
+[ "${out}" = "" ] || ng "$LINENO"
 
 out=$(echo 50000 | ./tuner)
 [ "$?" = 1 ]      || ng "$LINENO"
-[ "${out}" = "Below 27.625Hz or above 4205.036Hz is not defined" ] || ng "$LINENO"
+[ "${out}" = "" ] || ng "$LINENO"
 
 out=$(echo a | ./tuner)
 [ "$?" = 1 ]      || ng "$LINENO"
