@@ -11,42 +11,26 @@ res=0
 
 #正常な動作
 out=$(echo 440 | ./tuner)
+[ "$?" = 0 ]      || ng "$LINENO"
 [ "${out}" = "A4  2.0" ] || ng "$LINENO"
 
-out=$(echo 27.5 | ./tuner)
-[ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
-out=$(echo 30.8 | ./tuner)
-[ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
-out=$(echo 32.7 | ./tuner)
-[ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
-out=$(echo 3951 | ./tuner)
-[ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
-out=$(echo 4186 | ./tuner)
-[ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
-#異常な動作
 out=$(echo 10 | ./tuner)
 [ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
-
-out=$(echo -10 | ./tuner)
-[ "$?" = 1 ]      || ng "$LINENO"
-[ "${out}" = "Out of tuner measurement range" ] || ng "$LINENO"
+[ "${out}" = "Undefined0  17.625" ] || ng "$LINENO"
 
 out=$(echo 5000 | ./tuner)
 [ "$?" = 0 ]      || ng "$LINENO"
-#[ "${out}" = "" ] || ng "$LINENO"
-echo $out
+[ "${out}" = "Undefined8  -794.964" ] || ng "$LINENO"
+
+#異常な動作
+out=$(echo 0 | ./tuner)
+[ "$?" = 1 ]      || ng "$LINENO"
+[ "${out}" = "" ] || ng "$LINENO"
+
+out=$(echo -10 | ./tuner)
+[ "$?" = 1 ]      || ng "$LINENO"
+[ "${out}" = "" ] || ng "$LINENO"
+
 out=$(echo a | ./tuner)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
