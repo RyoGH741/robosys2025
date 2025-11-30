@@ -44,7 +44,7 @@ A4  -2.0
 $ echo -10 | ./tuner
 Out of tuner measurement range
 ```
-　（終了コード：1）
+　　（終了コード：1）
 
 ## 必要なソフトウェア
 - Python
