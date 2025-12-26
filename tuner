@@ -34,4 +34,4 @@ for i in range(1, 89):
         difference = round(heikinritu(i) - freq, 3)
         break
 
-print(f"{onmei}{number} {difference}")
+print(f"{onmei}{number}  {difference}")
