@@ -13,17 +13,17 @@ res=0
 
 out=$(echo 440 | ./tuner)
 [ "$?" = 0 ]      || ng "$LINENO"
-[ "${out}" = "A4  2.0" ] || ng "$LINENO"
+[ "${out}" = "A4 2.0" ] || ng "$LINENO"
 
 #範囲内で極端に小さいとき
 out=$(echo 10 | ./tuner)
 [ "$?" = 0 ]      || ng "$LINENO"
-[ "${out}" = "Undefined0  17.625" ] || ng "$LINENO"
+[ "${out}" = "Undefined0 17.625" ] || ng "$LINENO"
 
 #範囲内で極端に大きいとき
 out=$(echo 5000 | ./tuner)
 [ "$?" = 0 ]      || ng "$LINENO"
-[ "${out}" = "Undefined8  -794.964" ] || ng "$LINENO"
+[ "${out}" = "Undefined8 -794.964" ] || ng "$LINENO"
 
 #異常な動作
 

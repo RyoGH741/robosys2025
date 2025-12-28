@@ -4,14 +4,15 @@
 
 import sys
 
-
 def heikinritu(n):
     return 442 * 2 ** (1 / 12 * (n-49))
-
 
 onmei_list = ["A", "B", "H", "C", "Ds", "D", "Es", "E", "F", "Gs", "G", "As"]
 number = 0
 freq = float(sys.stdin.read())
+onmei = "Undefined"
+difference = 0.0
+base = 0.0
 
 if (freq <= 0):
     print("Out of tuner measurement range", file=sys.stderr)
@@ -23,15 +24,13 @@ for i in range(1, 89):
 
     if (heikinritu(i - 0.5) <= freq) and (freq < heikinritu(i + 0.5)):
         onmei = onmei_list[i % 12 - 1]
-        difference = round(heikinritu(i) - freq, 3)
         break
     elif(freq < heikinritu(i - 0.5)):
-        onmei = "Undefined"
-        difference = round(heikinritu(i) - freq, 3)
         break
     elif(heikinritu(i + 0.5) <= freq ) and (88 == i):
-        onmei = "Undefined"
-        difference = round(heikinritu(i) - freq, 3)
         break
 
-print(f"{onmei}{number}  {difference}")
+difference = round(heikinritu(i) - freq, 3)
+base = round(heikinritu(i), 3)
+#print(f"{onmei}{number} {difference} {base}")
+print(f"{onmei}{number} {difference}")
